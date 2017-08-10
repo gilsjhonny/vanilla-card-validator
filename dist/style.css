@@ -1,0 +1,145 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background: #606c88; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to left,
+        #3f4c6b,
+        #606c88
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3f4c6b, #606b88);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+}
+.wrapper {
+    margin-top: 4rem;
+    background: #ffffff;
+    border-radius: 25px;
+    width: 20%;
+    min-width: 300px;
+    height: 200px;
+    padding: 2rem;
+    box-shadow: 0 24px 20px rgba(0, 0, 0, 0.10);
+}
+/* Credit Card Validator */
+[name="card-container"] {
+    position: relative;
+    width: 100%;
+}
+#card-number {
+    height: 40px;
+    width: 100%;
+    padding-right: 50px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #606c88;
+}
+#card-logo {
+    width: 46px;
+    height: 30px;
+    position: absolute;
+    top: 23px;
+    right: 3px;
+}
+.validcard {
+    border: 3px dashed #67bea3 !important;
+    border-width: 3px !important;
+    color: #67bea3 !important;
+    font-weight: 700 !important;
+}
+.visa {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 0 no-repeat;
+}
+.mastercard {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -30px no-repeat;
+}
+.amex {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -60px no-repeat;
+}
+.diners {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -90px no-repeat;
+}
+.discover {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -120px no-repeat;
+}
+.shopping {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -150px no-repeat;
+}
+.naranja {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -180px no-repeat;
+}
+.qida {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -210px no-repeat;
+}
+.clubdia {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -240px no-repeat;
+}
+.musicred {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -270px no-repeat;
+}
+.nevada {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -300px no-repeat;
+}
+.tuya {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -330px no-repeat;
+}
+.laanonima {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -360px no-repeat;
+}
+.crediguia {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -390px no-repeat;
+}
+.patagonia {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -410px no-repeat;
+}
+.sol {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -440px no-repeat;
+}
+.cabal {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -470px no-repeat;
+}
+.cencosud {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -500px no-repeat;
+}
+.credimas {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -530px no-repeat;
+}
+.carrefour {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -560px no-repeat;
+}
+.grupar {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -590px no-repeat;
+}
+.wishgift {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -610px no-repeat;
+}
+.unknown {
+    background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
+        0 -640px no-repeat;
+}
