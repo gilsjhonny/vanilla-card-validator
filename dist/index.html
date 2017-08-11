@@ -15,7 +15,9 @@
         <form>
             <div name="card-container">
                 <label class="card-label" for="">Credit Card</label>
-                <input type="text" id="card-number" data-bin="4111">
+                <input class="form-control" type="hidden" data-decidir="card_number" id="card_number_unmasked" />
+                <input class="form-control" type="text" id="card_number" placeholder="•••• •••• •••• ••••" maxlength="16" data-bin="4111"
+                />
                 <div id="card-logo" class=""></div>
             </div>
         </form>

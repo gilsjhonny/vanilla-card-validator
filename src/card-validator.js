@@ -1,7 +1,7 @@
-const defaults = {
+let defaults = {
     cardLogoSelector: '#card-logo',
     cardLabelSelector: '#card-label',
-    cardNumberSelector: '#card-number',
+    cardNumberSelector: '#card_number',
     errorMessage: 'Tarjeta invalida'
 };
 
@@ -322,19 +322,15 @@ const hasValidBin = element => {
 };
 
 const validCardClass = bool => {
-    var cardInput = document.querySelector(defaults.inputMaskedSelector);
+    var cardInput = document.querySelector(defaults.cardNumberSelector);
 
     if (cardInput) {
         if (bool) {
-            var label = document.querySelector(defaults.cardLabelSelector);
-
             cardInput.classList.remove('error');
             cardInput.classList.add('validcard');
-            console.log('Valida');
+            // console.log('Valida');
         } else {
-            var label = document.querySelector(defaults.cardLabelSelector);
-
-            console.log('No Valida');
+            // console.log('No Valida');
             cardInput.classList.add('error');
             cardInput.classList.remove('validcard');
         }
@@ -379,11 +375,9 @@ function validateLuhn(number) {
     var result = (s1 + s2).toString();
 
     if (result.charAt(result.length - 1) === '0') {
-        console.log('Valida');
         return true;
     } else {
-        console.log('No Valida');
-        return false;
+        // console.log('No Valida');
     }
 }
 
@@ -391,4 +385,4 @@ function trimAllSpaces(str) {
     return str.replace(/\s/g, '').trim();
 }
 
-export { predictCard, validateCard, setMaxlength, setBinPlaceholder };
+export { defaults, predictCard, validateCard, setMaxlength, setBinPlaceholder };
