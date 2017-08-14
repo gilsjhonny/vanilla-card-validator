@@ -377,7 +377,7 @@ function validateLuhn(number) {
     if (result.charAt(result.length - 1) === '0') {
         return true;
     } else {
-        // console.log('No Valida');
+        // console.log('Luhn invalido');
     }
 }
 
