@@ -1,7 +1,9 @@
 let defaults = {
-    cardLogoSelector: '#card-logo',
-    cardLabelSelector: '#card-label',
-    cardNumberSelector: '#card_number',
+    querySelectors: {
+        logo: '#card-logo',
+        label: '#card-label',
+        cardNumber: '#card_number'
+    },
     errorMessage: 'Tarjeta invalida'
 };
 
@@ -235,18 +237,19 @@ const rules = {
 };
 
 // HTML Elements
-const cardNumberInput = document.querySelector(defaults.cardNumberSelector);
-const cardLogo = document.querySelector(defaults.cardLogoSelector);
+const cardNumberInput = document.querySelector(
+    defaults.querySelectors.cardNumber
+);
+const cardLogo = document.querySelector(defaults.querySelectors.logo);
 
-// Event Listeners
+// Add Event Listeners
 if (cardNumberInput && cardLogo) {
     cardNumberInput.addEventListener('input', function(e) {
         predictCard(this);
-        hasValidBin(this);
 
         validateCard(cardNumberInput)
-            ? validCardClass(true)
-            : validCardClass(false);
+            ? validCardClass(cardNumberInput, true)
+            : validCardClass(cardNumberInput, false);
     });
 }
 
@@ -264,7 +267,9 @@ const predictCard = element => {
     for (var card in cards) {
         if (cards.hasOwnProperty(card)) {
             if (cards[card].predict.test(cardNumber)) {
+                // In case of needing the mask pattern
                 element.setAttribute('mask-pattern', cards[card].maskPattern);
+                // Take into consideration the length including mask pattern
                 const maxLength = cards[card].maskPattern.length;
                 setMaxlength(element, maxLength);
 
@@ -286,11 +291,10 @@ const setCardLogo = (card = 'unknown') => {
 };
 
 const validateCard = element => {
-    const cardNumber = element.value.replace(/\s/g, '').trim();
+    const cardNumber = element.value.trimAllSpaces();
 
+    // If is not a possible card number, then return false
     if (!rules.CardNumber.test(cardNumber)) return false;
-
-    if (!hasValidBin(element)) return false;
 
     for (var card in cards) {
         if (cards[card].regex.test(cardNumber)) {
@@ -303,36 +307,16 @@ const setMaxlength = (element, length) => {
     element.setAttribute('maxlength', length);
 };
 
-const setBinPlaceholder = (element, bin) => {
-    element.value = bin;
-};
-
-const hasValidBin = element => {
-    const bin = element.dataset.bin;
-
-    if (!bin) return false;
-
-    return bin;
-
-    if (bin !== element.value.slice(0, bin.length)) {
-        return false;
-    }
-
-    return true;
-};
-
-const validCardClass = bool => {
-    var cardInput = document.querySelector(defaults.cardNumberSelector);
-
-    if (cardInput) {
+const validCardClass = (element, bool) => {
+    if (element) {
         if (bool) {
-            cardInput.classList.remove('error');
-            cardInput.classList.add('validcard');
+            element.classList.remove('error');
+            element.classList.add('validcard');
             // console.log('Valida');
         } else {
             // console.log('No Valida');
-            cardInput.classList.add('error');
-            cardInput.classList.remove('validcard');
+            element.classList.add('error');
+            element.classList.remove('validcard');
         }
     }
 };
@@ -385,4 +369,4 @@ function trimAllSpaces(str) {
     return str.replace(/\s/g, '').trim();
 }
 
-export { defaults, predictCard, validateCard, setMaxlength, setBinPlaceholder };
+export { defaults, predictCard, validateCard, setMaxlength };
