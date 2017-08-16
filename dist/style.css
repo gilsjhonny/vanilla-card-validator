@@ -1,18 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 html {
     font-size: 16px;
 }
 
 body {
-    background: #606c88; /* fallback for old browsers */
+    background: #757f9a; /* fallback for old browsers */
     background: -webkit-linear-gradient(
-        to left,
-        #3f4c6b,
-        #606c88
+        to right,
+        #d7dde8,
+        #757f9a
     ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #3f4c6b, #606b88);
+    background: linear-gradient(to right, #d7dde8, #757f9a);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 input:focus {
     outline: none;
@@ -23,7 +26,7 @@ input:focus {
     border-radius: 25px;
     width: 20%;
     min-width: 300px;
-    height: 200px;
+    height: 80px;
     padding: 2rem;
     box-shadow: 0 24px 20px rgba(0, 0, 0, 0.10);
 }
@@ -31,32 +34,50 @@ input:focus {
 [name="card-container"] {
     position: relative;
     width: 100%;
+    padding-top: 15px;
 }
-#card_number {
+[name="card-container"] label {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    font-size: .8rem;
+    color: #308cbd;
+    font-weight: 400;
+    cursor: text;
+    pointer-events: none;
+    transition: all .2s linear;
+}
+#card {
     height: 40px;
     width: 100%;
     padding-right: 50px;
     padding-left: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
-    border: 1px solid #606c88;
+    border: none;
+    border-bottom: 1px solid #91b7de;
 }
-#card-logo {
+/* #card:focus ~ .card-label {
+    font-size: .8rem;
+    color: #308cbd;
+    font-weight: 400;
+    top: 0%;
+}
+#card:active ~ .card-label {
+    top: 0%;
+} */
+#logo {
     width: 46px;
     height: 30px;
     position: absolute;
-    top: 23px;
+    top: 17px;
     right: 3px;
 }
 .validcard {
-    border: 3px dashed #67bea3 !important;
-    border-width: 3px !important;
+    border-bottom: 1px dashed #67bea3 !important;
     color: #67bea3 !important;
-    font-weight: 700 !important;
 }
 .error {
-    border: 3px dashed rgb(248, 86, 88) !important;
-    border-width: 3px !important;
+    border-bottom: 1px dashed rgb(248, 86, 88) !important;
 }
 .visa {
     background: url("https://jscardvalidator-mpccmwdwqf.now.sh/cards_sprite_compressed_30.jpg")
