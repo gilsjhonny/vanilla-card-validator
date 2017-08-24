@@ -1,6 +1,6 @@
 import cards from './cards';
 import rules from './rules';
-import { trimAllSpaces, mask } from './helpers';
+import { trimAllSpaces, mask, setMaxlength } from './helpers';
 
 let defaults = {
     querySelectors: {
@@ -19,20 +19,24 @@ const init = () => {
 
     // Add Event Listeners
     if (cardNumberInput && cardLogo) {
-        cardNumberInput.addEventListener('input', function(e) {
-            if (this.getAttribute('mask-pattern'))
-                this.value = mask(
-                    this.value,
-                    this.getAttribute('mask-pattern')
-                );
+        cardNumberInput.addEventListener('input', function() {
+            // Clear any error class if there's any
+            this.classList.remove('error');
 
-            let card = predictCard(this);
+            // Check for mask-pattern
+            const maskPattern = this.getAttribute('mask-pattern');
+            if (maskPattern) this.value = mask(this.value, maskPattern);
+
+            const card = predictCard(this);
 
             card
                 ? setCardLogo(cardLogo, card)
                 : setCardLogo(cardLogo, 'unknown');
 
-            validateCard(cardNumberInput)
+            if (this.value.length === 0) debugger;
+
+            console.log(`Value: ${this.value.length}`);
+            validateCard(cardNumberInput) && this.value.length > 0
                 ? validCardClass(cardNumberInput, true)
                 : validCardClass(cardNumberInput, false);
         });
@@ -85,21 +89,15 @@ const validateCard = element => {
     }
 };
 
-const setMaxlength = (element, length) => {
-    element.setAttribute('maxlength', length);
-};
-
 const validCardClass = (element, bool) => {
-    if (element) {
-        if (bool) {
-            element.classList.remove('error');
-            element.classList.add('validcard');
-            // console.log('Valida');
-        } else {
-            // console.log('No Valida');
-            element.classList.add('error');
-            element.classList.remove('validcard');
-        }
+    if (!element) return;
+
+    if (bool) {
+        element.classList.remove('error');
+        element.classList.add('validcard');
+    } else {
+        element.classList.add('error');
+        element.classList.remove('validcard');
     }
 };
 
@@ -147,4 +145,4 @@ function validateLuhn(number) {
     }
 }
 
-export { init, defaults, predictCard, validateCard, setMaxlength };
+export { init, defaults, predictCard, validateCard };

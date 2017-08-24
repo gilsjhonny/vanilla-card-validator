@@ -1,5 +1,9 @@
 const trimAllSpaces = str => str.replace(/\s/g, '').trim();
 
+const setMaxlength = (element, length) => {
+    element.setAttribute('maxlength', length);
+};
+
 const mask = (str, pattern) => {
     let arrPattern = [...pattern];
     let noSpaces = [...str.replace(/\s/g, '')];
@@ -20,4 +24,4 @@ const mask = (str, pattern) => {
     return masked.join('');
 };
 
-export { trimAllSpaces, mask };
+export { trimAllSpaces, mask, setMaxlength };
